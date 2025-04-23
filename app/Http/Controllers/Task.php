@@ -16,7 +16,7 @@ class Task extends Controller
         $notes = TaskList::orderBy('created_at','asc')->get();
         return view('index',['notes' => $notes]);
     }
-
+    // ! ADD DATA
     public function add(Request $request)
     {
         $validated = $request->validate([
@@ -26,18 +26,25 @@ class Task extends Controller
         TaskList::create($validated);
         return redirect('/');
     }
-
-    public function edit(Request $request, TaskList $taskList)
+    //!UPDATE DATA
+    public function showEdit(TaskList $taskList)
     {
-        // $taskList = $request -> all();
-        // TaskList::findOrFail() -> update($taskList);
-        // return redirect('/');
+        return view('update',['taskList' => $taskList]);
     }
 
+    public function edit(TaskList $taskList,Request $request)
+    {
+        $validate = $request->validate([
+            'list' => 'required|string|max:30'
+        ]);
+        $taskList->update($validate);
+        return redirect('/')->with('success','Todo list sucessfully created');
+    }
+    // !!DELETE DATA
     public function destroy(TaskList $taskList) 
     {
         $taskList->delete();
-        return redirect('/');
+        return redirect('/')->with('success','Todo list sucessfully deleted');
     }
 
 

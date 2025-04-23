@@ -10,6 +10,12 @@
                         @endforeach
                     </ul>
                 @endif
+
+                @if(session('success'))
+                <div class="bg-emerald-500 text-white py-2 px-5">
+                    {{ session('success') }}
+                </div>
+                @endif
                 <h1 class="text-grey-darkest">Todo List</h1>
                 <form action="{{ route('add') }}" method="POST">
                     @csrf
@@ -33,18 +39,17 @@
                                     <button class="flex-no-shrink hover:text-red-400 cursor-pointer">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
-                                </form>
-                                </div>
-                                <form action="{{ route('edit',$note->id) }}" method="POST">
-                                    @csrf
-                                    <button class="flex-no-shrink hover:text-red-400 cursor-pointer">
-                                        <i class="fa-solid fa-edit"></i>
-                                    </button>
-                                </form>
+                            </form>
                         </div>
-                    @endforeach
+                        <a href="{{ route('showEdit',$note->id) }}">
+                            <button class="flex-no-shrink hover:text-red-400 cursor-pointer">
+                                <i class="fa-solid fa-edit"></i>
+                            </button>
+                        </a>
                 </div>
+                @endforeach
             </div>
         </div>
+    </div>
     </div>
 </x-layout>
