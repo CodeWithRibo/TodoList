@@ -3,7 +3,7 @@
 ## ABOUT GHAGI MANN TODO LIST
 ![image](https://github.com/user-attachments/assets/109fedb5-acb3-4ed3-8c25-aede969e3bf9)
 
-GMP TODO-LIST is a simple TODO WEB APP that can create your task, read, edit, and delete your task 
+GMP TODO-LIST is a simple TODO WEB APP using Laravel that can create your task, read, edit, and delete your task 
 
 <strong>Features in GMP TODO-LIST</strong>
 
