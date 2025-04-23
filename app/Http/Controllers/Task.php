@@ -38,13 +38,13 @@ class Task extends Controller
             'list' => 'required|string|max:30'
         ]);
         $taskList->update($validate);
-        return redirect('/')->with('success','Todo list sucessfully created');
+        return redirect('/')->with('successCreated','Todo list sucessfully created');
     }
     // !!DELETE DATA
     public function destroy(TaskList $taskList) 
     {
         $taskList->delete();
-        return redirect('/')->with('success','Todo list sucessfully deleted');
+        return redirect('/')->with('successDeleted','Todo list sucessfully deleted');
     }
 
 
