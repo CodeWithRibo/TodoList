@@ -1,7 +1,6 @@
 <x-layout>
     <div class="pt-32 w-full flex items-center justify-center bg-teal-lightest font-sans">
         <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
-            <h1 class="text-blue-600 text-center font-bold">GHAGI MANN PRODUCTION TO-DO LIST</h1>
             <div class="mb-4">
                 @if ($errors->any())
                     <ul class="px-5 py-2 bg-red-500 text-white">
@@ -11,9 +10,10 @@
                     </ul>
                 @endif
 
-                @if (session('successCreated'))
+                @if (session('successCreated') || session('successEdited'))
                     <div class="bg-emerald-500 text-white py-2 px-5">
                         {{ session('successCreated') }}
+                        {{ session('successEdited') }}
                     </div>
                 @elseif(session('successDeleted'))
                     <div class="bg-red-500 text-white py-2 px-5">
@@ -26,7 +26,7 @@
                         <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
                             placeholder="Add Todo" name="list" id="listItem">
                         <button type="submit"
-                            class="flex-no-shrink p-2 border-2 rounded text-teal border-teal  hover:bg-teal-400 cursor-pointer">Add</button>
+                            class="flex-no-shrink btn btn-outline btn-primary">Add</button>
                     </div>
                 </form>
             </div>

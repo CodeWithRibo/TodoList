@@ -20,11 +20,11 @@ class Task extends Controller
     public function add(Request $request)
     {
         $validated = $request->validate([
-            'list' => 'required|string|min:5|max:30'    
+            'list' => 'required|string|min:5|max:50'    
         ]);
         
         TaskList::create($validated);
-        return redirect('/');
+        return redirect('/')->with('successCreated','Todo list sucessfully created');
     }
     //!UPDATE DATA
     public function showEdit(TaskList $taskList)
@@ -38,7 +38,7 @@ class Task extends Controller
             'list' => 'required|string|max:30'
         ]);
         $taskList->update($validate);
-        return redirect('/')->with('successCreated','Todo list sucessfully created');
+        return redirect('/')->with('successEdited','Todo list sucessfully edited');
     }
     // !!DELETE DATA
     public function destroy(TaskList $taskList) 
